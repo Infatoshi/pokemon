@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Card Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Pokémon Card Generator</h1>
+        <div class="editor">
+            <h2>Customize Your Card</h2>
+            <div class="form-group">
+                <label for="pokemonName">Pokémon Name:</label>
+                <input type="text" id="pokemonName" value="Eevee" onchange="updateCard()">
+            </div>
+            <div class="form-group">
+                <label for="pokemonType">Pokémon Type:</label>
+                <select id="pokemonType" onchange="updateCard()">
+                    <option value="colorless" selected>Colorless</option>
+                    <option value="grass">Grass</option>
+                    <option value="fire">Fire</option>
+                    <option value="water">Water</option>
+                    <option value="lightning">Lightning</option>
+                    <option value="psychic">Psychic</option>
+                    <option value="fighting">Fighting</option>
+                    <option value="darkness">Darkness</option>
+                    <option value="metal">Metal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="hp">HP:</label>
+                <input type="number" id="hp" value="50" min="10" max="340" step="10" onchange="updateCard()">
+            </div>
+            <div class="form-group">
+                <label for="pokemonImage">Pokémon Image URL:</label>
+                <input type="text" id="pokemonImage" value="../Flux Fine Tuning Images/Eevee Images/eevee2.png" onchange="updateCard()">
+            </div>
+            <div class="form-group">
+                <label for="attackName">Attack Name:</label>
+                <input type="text" id="attackName" value="Tackle" onchange="updateCard()">
+            </div>
+            <div class="form-group">
+                <label for="attackCost">Attack Energy Cost:</label>
+                <select id="attackCost" onchange="updateCard()">
+                    <option value="1colorless" selected>1 Colorless</option>
+                    <option value="2colorless">2 Colorless</option>
+                    <option value="1type">1 Type-Specific</option>
+                    <option value="1type1colorless">1 Type-Specific + 1 Colorless</option>
+                    <option value="2type">2 Type-Specific</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="attackDamage">Attack Damage:</label>
+                <input type="number" id="attackDamage" value="20" min="0" max="300" step="10" onchange="updateCard()">
+            </div>
+            <div class="form-group">
+                <label for="attackDesc">Attack Description:</label>
+                <textarea id="attackDesc" onchange="updateCard()">Flip a coin. If heads, this attack does 20 damage to the Defending Pokémon.</textarea>
+            </div>
+            <div class="form-group">
+                <label for="weakness">Weakness:</label>
+                <select id="weakness" onchange="updateCard()">
+                    <option value="none">None</option>
+                    <option value="grass">Grass</option>
+                    <option value="fire">Fire</option>
+                    <option value="water">Water</option>
+                    <option value="lightning" selected>Lightning</option>
+                    <option value="psychic">Psychic</option>
+                    <option value="fighting">Fighting</option>
+                    <option value="darkness">Darkness</option>
+                    <option value="metal">Metal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="resistance">Resistance:</label>
+                <select id="resistance" onchange="updateCard()">
+                    <option value="none" selected>None</option>
+                    <option value="grass">Grass</option>
+                    <option value="fire">Fire</option>
+                    <option value="water">Water</option>
+                    <option value="lightning">Lightning</option>
+                    <option value="psychic">Psychic</option>
+                    <option value="fighting">Fighting</option>
+                    <option value="darkness">Darkness</option>
+                    <option value="metal">Metal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="retreatCost">Retreat Cost:</label>
+                <select id="retreatCost" onchange="updateCard()">
+                    <option value="0">0</option>
+                    <option value="1" selected>1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="setSymbol">Set Symbol:</label>
+                <select id="setSymbol" onchange="updateCard()">
+                    <option value="0" selected>Base Set</option>
+                    <option value="1">Jungle</option>
+                    <option value="2">Fossil</option>
+                    <option value="3">Team Rocket</option>
+                    <option value="4">Gym Heroes</option>
+                    <option value="5">Gym Challenge</option>
+                    <option value="6">Neo Genesis</option>
+                    <option value="7">Neo Discovery</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="rarity">Rarity:</label>
+                <select id="rarity" onchange="updateCard()">
+                    <option value="common" selected>Common (No Symbol)</option>
+                    <option value="uncommon">Uncommon</option>
+                    <option value="rare">Rare</option>
+                    <option value="doubleRare">Double Rare</option>
+                    <option value="ultraRare">Ultra Rare</option>
+                    <option value="illustrationRare">Illustration Rare</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="cardNumber">Card Number:</label>
+                <input type="text" id="cardNumber" value="51/102" onchange="updateCard()">
+            </div>
+            <div class="form-group">
+                <label for="templateStyle">Card Template:</label>
+                <select id="templateStyle" onchange="updateCard()">
+                    <option value="normal" selected>Normal (White)</option>
+                    <option value="black">Black (Dark)</option>
+                    <option value="yellow">Yellow (Energy)</option>
+                </select>
+            </div>
+<div class="form-group">
+    <label for="headerXPos">Header X Position (px):</label>
+    <input type="range" id="headerXPos" min="0" max="500" value="0" onchange="updateCard()">
+</div>
+<div class="form-group">
+    <label for="headerYPos">Header Y Position (px):</label>
+    <input type="range" id="headerYPos" min="0" max="500" value="0" onchange="updateCard()">
+</div>
+<div class="form-group">
+    <label for="imageXPos">Image X Position (px):</label>
+    <input type="range" id="imageXPos" min="0" max="500" value="0" onchange="updateCard()">
+</div>
+<div class="form-group">
+    <label for="imageYPos">Image Y Position (px):</label>
+    <input type="range" id="imageYPos" min="0" max="500" value="0" onchange="updateCard()">
+</div>
+<div class="form-group">
+    <label for="bodyXPos">Body X Position (px):</label>
+    <input type="range" id="bodyXPos" min="0" max="500" value="0" onchange="updateCard()">
+</div>
+<div class="form-group">
+    <label for="bodyYPos">Body Y Position (px):</label>
+    <input type="range" id="bodyYPos" min="0" max="500" value="0" onchange="updateCard()">
+</div>
+<div class="form-group">
+    <label for="footerXPos">Footer X Position (px):</label>
+    <input type="range" id="footerXPos" min="0" max="500" value="0" onchange="updateCard()">
+</div>
+<div class="form-group">
+    <label for="footerYPos">Footer Y Position (px):</label>
+    <input type="range" id="footerYPos" min="0" max="500" value="0" onchange="updateCard()">
+</div>
+<div class="form-group">
+    <label for="infoXPos">Info X Position (px):</label>
+    <input type="range" id="infoXPos" min="0" max="500" value="0" onchange="updateCard()">
+</div>
+<div class="form-group">
+    <label for="infoYPos">Info Y Position (px):</label>
+    <input type="range" id="infoYPos" min="0" max="500" value="0" onchange="updateCard()">
+</div>
+<div class="form-group">
+    <label for="imageScale">Image Scale (%):</label>
+    <input type="range" id="imageScale" min="50" max="200" value="100" onchange="updateCard()">
+</div>
+<div class="form-group">
+    <label for="nameXPos">Name X Position (px):</label>
+    <input type="range" id="nameXPos" min="0" max="500" value="0" onchange="updateCard()">
+</div>
+<div class="form-group">
+    <label for="nameYPos">Name Y Position (px):</label>
+    <input type="range" id="nameYPos" min="0" max="500" value="0" onchange="updateCard()">
+</div>
+<div class="form-group">
+    <label for="typeXPos">Type X Position (px):</label>
+    <input type="range" id="typeXPos" min="0" max="500" value="0" onchange="updateCard()">
+</div>
+<div class="form-group">
+    <label for="typeYPos">Type Y Position (px):</label>
+    <input type="range" id="typeYPos" min="0" max="500" value="0" onchange="updateCard()">
+</div>
+<div class="form-group">
+    <label for="hpXPos">HP X Position (px):</label>
+    <input type="range" id="hpXPos" min="0" max="500" value="0" onchange="updateCard()">
+</div>
+<div class="form-group">
+    <label for="hpYPos">HP Y Position (px):</label>
+    <input type="range" id="hpYPos" min="0" max="500" value="0" onchange="updateCard()">
+</div>
+        </div>
+        <div class="card-preview">
+            <h2>Card Preview</h2>
+            <div id="pokemonCard" class="card normal">
+                <div class="card-frame">
+                    <div class="card-header">
+                        <div class="pokemon-name">Eevee</div>
+                        <div class="pokemon-type"></div>
+                        <div class="hp">HP 50</div>
+                    </div>
+                    <div class="card-image">
+                        <img src="../Flux Fine Tuning Images/Eevee Images/eevee2.png" alt="Pokémon Image" id="pokemonImageDisplay">
+                    </div>
+                    <div class="card-body">
+                        <div class="attack">
+                            <div class="attack-cost"></div>
+                            <div class="attack-content">
+                                <div class="attack-name">Tackle</div>
+                                <div class="attack-damage">20</div>
+                            </div>
+                            <p class="attack-desc">Flip a coin. If heads, this attack does 20 damage to the Defending Pokémon.</p>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="weakness">
+                            <div class="weakness-type"></div>
+                        </div>
+                        <div class="resistance">
+                            <div class="resistance-type"></div>
+                        </div>
+                        <div class="retreat-cost">
+                            <div class="retreat-icons"></div>
+                        </div>
+                    </div>
+                    <div class="card-info">
+                        <div class="set-symbol"></div>
+                        <div class="rarity"></div>
+                        <div class="card-number">51/102</div>
+                        <div class="copyright">©2025 Pokémon/Nintendo</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

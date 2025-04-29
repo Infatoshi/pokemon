@@ -1,0 +1,509 @@
+.card-header, .card-image, .card-body, .card-footer, .card-info {
+    position: absolute;
+}
+body {
+    font-family: 'Roboto Condensed', sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+h1 {
+    width: 100%;
+    text-align: center;
+    color: #333;
+}
+
+.editor {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+/* Make the form more compact */
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 3px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.form-group textarea {
+    height: 60px;
+    resize: vertical;
+}
+
+.card-preview {
+    flex: 1;
+    min-width: 300px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Card Styling */
+.card {
+    width: 350px;
+    height: 490px;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.card-frame {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-image: url('../frame.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.card.normal .card-frame {
+    background-image: url('../frame.png');
+}
+
+.card.black .card-frame {
+    filter: brightness(0.7) hue-rotate(180deg);
+}
+
+.card.yellow .card-frame {
+    filter: sepia(0.5) hue-rotate(10deg) saturate(1.5);
+}
+
+/* Card Header */
+.card-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 15px;
+    height: 40px;
+}
+
+.pokemon-name {
+    color: #FFC107; /* Pokémon yellow */
+    text-shadow:
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000,
+         0   -1px 0 #000,
+         0    1px 0 #000,
+        -1px  0   0 #000,
+         1px  0   0 #000;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: -5px; /* Shift the text up by 5px */
+}
+
+.pokemon-type {
+    width: 25px;
+    height: 25px;
+    background-size: 900%;
+    background-repeat: no-repeat;
+    margin-right: 10px; /* Removed margin-left: auto and order to simplify positioning */
+}
+
+.hp {
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: auto; /* Added margin-left: auto to push HP to the right */
+}
+
+/* Card Image */
+.card-image {
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin: 0 15px;
+    background-color: rgba(245, 245, 245, 0.7);
+    border-radius: 5px;
+}
+
+.card-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Card Body */
+.card-body {
+    padding: 15px;
+    text-align: left;
+    font-size: 14px;
+    line-height: 1.4;
+    flex: 1;
+}
+
+.attack {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.attack-cost {
+    display: flex;
+    margin-bottom: 5px;
+    height: 20px;
+}
+
+.energy-icon {
+    width: 20px;
+    height: 20px;
+    background-size: 900%;
+    background-repeat: no-repeat;
+    margin-right: 5px;
+}
+
+.attack-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.attack-name {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.attack-damage {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.attack-desc {
+    margin: 5px 0 0;
+    font-size: 12px;
+}
+
+/* Card Footer */
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+    font-size: 12px;
+    margin-top: auto;
+}
+
+.weakness, .resistance, .retreat-cost {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.label {
+    font-size: 10px;
+    margin-bottom: 3px;
+}
+
+.weakness-type, .resistance-type {
+    width: 20px;
+    height: 20px;
+    background-size: 900%;
+    background-repeat: no-repeat;
+}
+
+.retreat-icons {
+    display: flex;
+}
+
+.retreat-icon {
+    width: 15px;
+    height: 15px;
+    background-size: 900%;
+    background-repeat: no-repeat;
+    margin-right: 2px;
+}
+
+/* Card Info */
+.card-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 15px;
+    font-size: 10px;
+    color: #333;
+}
+
+.set-symbol {
+    width: 20px;
+    height: 20px;
+    background-size: 800%;
+    background-repeat: no-repeat;
+}
+
+.rarity {
+    width: 30px;
+    height: 15px;
+    background-size: 500%;
+    background-repeat: no-repeat;
+}
+
+.card-number, .copyright {
+    font-size: 8px;
+}
+
+/* Type Icons */
+.type-colorless {
+    background-image: url('../icons.png');
+    background-position: 50% 0%; /* Corrected position */
+}
+
+.type-grass {
+    background-image: url('../icons.png');
+    background-position: 0% 0%; /* Corrected position */
+}
+
+.type-fire {
+    background-image: url('../icons.png');
+    background-position: 100% 0%; /* Corrected position */
+}
+
+.type-water {
+    background-image: url('../icons.png');
+    background-position: 33.3% 33.3%; /* Corrected position */
+}
+
+.type-lightning {
+    background-image: url('../icons.png');
+    background-position: 0% 33.3%; /* Corrected position */
+}
+
+.type-psychic {
+    background-image: url('../icons.png');
+    background-position: 66.6% 33.3%; /* Corrected position */
+}
+
+.type-fighting {
+    background-image: url('../icons.png');
+    background-position: 66.6% 0%; /* Corrected position */
+}
+
+.type-darkness {
+    background-image: url('../icons.png');
+    background-position: 33.3% 0%; /* Corrected position */
+}
+
+.type-metal {
+    background-image: url('../icons.png');
+    background-position: 100% 33.3%; /* Corrected position */
+}
+
+/* Energy Icons (using the same sprite sheet as type icons) */
+.energy-icon.type-colorless {
+    background-position: 50% 0%; /* Corrected position */
+}
+
+.energy-icon.type-grass {
+    background-position: 0% 0%; /* Corrected position */
+}
+
+.energy-icon.type-fire {
+    background-position: 100% 0%; /* Corrected position */
+}
+
+.energy-icon.type-water {
+    background-position: 33.3% 33.3%; /* Corrected position */
+}
+
+.energy-icon.type-lightning {
+    background-position: 0% 33.3%; /* Corrected position */
+}
+
+.energy-icon.type-psychic {
+    background-position: 66.6% 33.3%; /* Corrected position */
+}
+
+.energy-icon.type-fighting {
+    background-position: 66.6% 0%; /* Corrected position */
+}
+
+.energy-icon.type-darkness {
+    background-position: 33.3% 0%; /* Corrected position */
+}
+
+.energy-icon.type-metal {
+    background-position: 100% 33.3%; /* Corrected position */
+}
+
+/* Weakness and Resistance Icons (using the same sprite sheet as type icons) */
+.weakness-type.type-colorless,
+.resistance-type.type-colorless {
+    background-position: 50% 0%; /* Corrected position */
+}
+
+.weakness-type.type-grass,
+.resistance-type.type-grass {
+    background-position: 0% 0%; /* Corrected position */
+}
+
+.weakness-type.type-fire,
+.resistance-type.type-fire {
+    background-position: 100% 0%; /* Corrected position */
+}
+
+.weakness-type.type-water,
+.resistance-type.type-water {
+    background-position: 33.3% 33.3%; /* Corrected position */
+}
+
+.weakness-type.type-lightning,
+.resistance-type.type-lightning {
+    background-position: 0% 33.3%; /* Corrected position */
+}
+
+.weakness-type.type-psychic,
+.resistance-type.type-psychic {
+    background-position: 66.6% 33.3%; /* Corrected position */
+}
+
+.weakness-type.type-fighting,
+.resistance-type.type-fighting {
+    background-position: 66.6% 0%; /* Corrected position */
+}
+
+.weakness-type.type-darkness,
+.resistance-type.type-darkness {
+    background-position: 33.3% 0%; /* Corrected position */
+}
+
+.weakness-type.type-metal,
+.resistance-type.type-metal {
+    background-position: 100% 33.3%; /* Corrected position */
+}
+
+/* Retreat Cost Icons (using the same sprite sheet as type icons) */
+.retreat-icon.type-colorless {
+    background-image: url('../icons.png');
+    background-position: 50% 0%; /* Corrected position */
+}
+
+
+/* Set Symbols */
+.set-symbol-0 {
+    background-image: url('../set-symbols.png');
+    background-position: 0% 0%;
+}
+
+.set-symbol-1 {
+    background-image: url('../set-symbols.png');
+    background-position: 14.3% 0%;
+}
+
+.set-symbol-2 {
+    background-image: url('../set-symbols.png');
+    background-position: 28.6% 0%;
+}
+
+.set-symbol-3 {
+    background-image: url('../set-symbols.png');
+    background-position: 42.9% 0%;
+}
+
+.set-symbol-4 {
+    background-image: url('../set-symbols.png');
+    background-position: 57.2% 0%;
+}
+
+.set-symbol-5 {
+    background-image: url('../set-symbols.png');
+    background-position: 71.5% 0%;
+}
+
+.set-symbol-6 {
+    background-image: url('../set-symbols.png');
+    background-position: 85.8% 0%;
+}
+
+.set-symbol-7 {
+    background-image: url('../set-symbols.png');
+    background-position: 100% 0%;
+}
+
+/* Rarity Symbols */
+.rarity-common {
+    display: none;
+}
+
+.rarity-uncommon {
+    background-image: url('../rarity.png');
+    background-position: 0% 50%;
+}
+
+.rarity-rare {
+    background-image: url('../rarity.png');
+    background-position: 25% 50%;
+}
+
+.rarity-doubleRare {
+    background-image: url('../rarity.png');
+    background-position: 0% 50%;
+}
+
+.rarity-ultraRare {
+    background-image: url('../rarity.png');
+    background-position: 25% 50%;
+}
+
+.rarity-illustrationRare {
+    background-image: url('../rarity.png');
+    background-position: 50% 50%;
+}
+
+/* Make the form more compact with a two-column layout for smaller fields */
+@media (min-width: 400px) {
+    .editor {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+    
+    .editor h2,
+    .form-group:nth-child(1),
+    .form-group:nth-child(3),
+    .form-group:nth-child(4),
+    .form-group:nth-child(8) {
+        grid-column: 1 / span 2;
+    }
+}
